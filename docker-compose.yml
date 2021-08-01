@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    build:             #buildから実施
+        context: ./web
+    ports:             #-p ポートフォワーディング
+      - '8080:8080'
+    volumes:           #-v hostディレクトリ(./web)をコンテナディレクトリ(/smart_dog)にマウント
+      - ./web:/smart_dog
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/smart_dog/target
+    tty: true          #-t ttyを割り当てます。
+    stdin_open: true   #-i STDINを開きます。
+    command: /bin/sh -c "cargo watch -x run"
+
+volumes:
+  cargo-cache:
+  target-cache:
