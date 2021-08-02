@@ -17,13 +17,24 @@
 
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	"workspaceFolder": "/smart_dog",
+	"workspaceFolder": "/workspace",
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": {},
+	"settings": {
+		// VS Code don't watch files under ./target
+        "files.watcherExclude": {
+            "**/target/**": true
+        }
+	},
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [],
+	"extensions": [
+        //"rust-lang.rust",　// conflict with rust-analyzer
+		"matklad.rust-analyzer",
+        "bungcip.better-toml",
+        "vadimcn.vscode-lldb",
+        "mutantdino.resourcemonitor" // it provides information about capacity for your containers in the Status bar
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -35,7 +46,7 @@
 	"shutdownAction": "stopCompose",
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	// "postCreateCommand": "apt-get update && apt-get install -y curl",
+    // "postCreateCommand": "rustc --version",
 
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
