@@ -6,7 +6,7 @@ services:
         context: ./web
     ports:             #-p ポートフォワーディング
       - '8080:8080'
-    volumes:           #-v hostディレクトリ(./web)をコンテナディレクトリ(/smart_dog)にマウント
+    volumes:           #-v hostディレクトリ(./web)をコンテナディレクトリ(/workspace)にマウント
       - ./web:/workspace/web
       - cargo-cache:/usr/local/cargo/registry
       - target-cache:/workspace/web/target

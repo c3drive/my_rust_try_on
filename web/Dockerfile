@@ -11,4 +11,5 @@ FROM rust:latest
 # RUN cd /workspace/web && \
 #     cargo add actix-web actix-rt && \
 #     cargo add thiserror && \
-#     cargo add r2d2 r2d2_sqlite
+#     cargo add r2d2 r2d2_sqlite && \
+#     cargo add askama
